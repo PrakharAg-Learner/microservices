@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: GATEWAY-SERVICE
+  cloud:
+    gateway:
+      routes:
+      - id: order-service
+        uri: lb://order-service
+        predicates:
+        - Path=/order/**
+      - id: payment-service
+        uri: lb://payment-service
+        predicates:
+        - Path=/payment/**
+        
+    
+server:
+  port: 8989
+ 
